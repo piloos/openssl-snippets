@@ -15,3 +15,6 @@ In order to build for buildroot, do the following:
  * add the directory 'opensslsnippets' to <build_dir>/sources/baseunit_build/baseunit_br_external/package/baseunit_package
  * add the following files to that directory: Config.in, opensslsnippets.mk
  * check in opensslsnippets.mk if the source directory is still correct
+ * in <build_dir>/sources/baseunit_build execute 'make opensslsnippets'
+
+note: in case of building for button, replace 'baseunit' by 'button' where applicable!
