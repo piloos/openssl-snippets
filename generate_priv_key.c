@@ -80,7 +80,7 @@ int main()
     EVP_PKEY* pkey = NULL;
     BIO *out = NULL;
     char buf[4096];
-    int ret, len;
+    int ret, len, exit;
 
     printf("off we go!\n");
 
@@ -90,12 +90,20 @@ int main()
     OpenSSL_add_all_algorithms();
 
     pkey = GenerateECKey(729, m_KeyCtx);
-    out = BIO_new(BIO_s_mem());
-    ret = EVP_PKEY_print_private(out, pkey, 0, NULL);
-    printf("print private returned %d\n", ret);
-    len = BIO_read(out, (void*) buf, 4096);
-    printf("%d bytes read from bio\n", len);
-    printf("\n%s\n\n", buf);
+    if (pkey) {
+        out = BIO_new(BIO_s_mem());
+        ret = EVP_PKEY_print_private(out, pkey, 0, NULL);
+        printf("print private returned %d\n", ret);
+        len = BIO_read(out, (void*) buf, 4096);
+        printf("%d bytes read from bio\n", len);
+        printf("\n%s\n\n", buf);
+        exit = 0;
+    }
+    else {
+        printf("Could not create private key!\n");
+        exit = 1;
+    }
 
     printf("bye bye!\n");
+    return exit;
 }
