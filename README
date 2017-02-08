@@ -2,6 +2,7 @@
 This repo contains some snippets regarding OpenSSL
 
 * generate_priv_key: snippet which generates a private/public EC key pair using openssl
+* read_random: tries to read x amount of bytes from a random source (eg /dev/urandom)
 
 In order to build locally:
 
