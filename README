@@ -15,6 +15,19 @@ In order to build for buildroot, do the following:
  * add the directory 'opensslsnippets' to <build_dir>/sources/baseunit_build/baseunit_br_external/package/baseunit_package
  * add the following files to that directory: Config.in, opensslsnippets.mk
  * check in opensslsnippets.mk if the source directory is still correct
- * in <build_dir>/sources/baseunit_build execute 'make opensslsnippets'
+
+ * in <build_dir>/sources/baseunit_build
+   ** execute 'make opensslsnippets'
+   OR
+   ** add opensslsnippets to the buildroot config
+    *** make menuconfig
+    *** select opensslsnippets (search for it :-))
+    *** make savedefconfig
+    *** make
+
+note: in case you want to have a non-stripped version of the binaries on target, you
+      need to add the binary name ('generate_priv_key.o') to the buildroot list of
+      binaries which should not be stripped (make menuconfig --> Build options -->
+      executables that should not be stripped --> add generate_priv_key.o)
 
 note: in case of building for button, replace 'baseunit' by 'button' where applicable!
