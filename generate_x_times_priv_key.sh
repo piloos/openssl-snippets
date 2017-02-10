@@ -1,6 +1,7 @@
 
 runs=$1
-curr_dir=$(dirname $0)
+abspath=$(readlink -f $0)
+currdir=$(dirname $abspath)
 
 echo Going to generate $runs private keys...
 
@@ -11,7 +12,7 @@ failures=0
 while [ $i -lt $runs ]
 do
   let i++
-  ${curr_dir}/generate_priv_key.o
+  ${currdir}/generate_priv_key.o
   ret=$?
   if [ $ret -eq 0 ]
   then

@@ -11,11 +11,11 @@ define OPENSSLSNIPPETS_BUILD_CMDS
 endef
 
 define OPENSSLSNIPPETS_INSTALL_TARGET_CMDS
-  cp $(@D)/generate_priv_key.o $(@D)/read_random.o $(@D)/generate_x_times_priv_key.sh $(TARGET_DIR)/bin/
+  cp $(@D)/generate_priv_key.o $(@D)/read_random.o $(@D)/generate_x_times_priv_key.sh $(@D)/test_read_random.sh $(TARGET_DIR)/bin/
 endef
 
 define OPENSSLSNIPPETS_UNINSTALL_TARGET_CMDS
-  rm $(TARGET_DIR)/generate_priv_key.o $(TARGET_DIR)/read_random.o $(TARGET_DIR)/generate_x_times_priv_key.sh
+  rm $(TARGET_DIR)/generate_priv_key.o $(TARGET_DIR)/read_random.o $(TARGET_DIR)/generate_x_times_priv_key.sh $(TARGET_DIR)/test_read_random.sh
 endef
 
 $(eval $(generic-package))

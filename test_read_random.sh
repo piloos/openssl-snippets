@@ -8,8 +8,8 @@ handler()
     exit 0
 }
 
-currdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-echo $currdir
+abspath=$(readlink -f $0)
+currdir=$(dirname $abspath)
 
 trap handler SIGINT
 trap handler SIGTERM
@@ -17,7 +17,6 @@ trap handler SIGTERM
 #start the read_random process
 ${currdir}/read_random.o &
 pid=$!
-echo $pid
 
 #give the process some time to setup
 sleep 1
