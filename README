@@ -2,7 +2,8 @@
 This repo contains some snippets regarding OpenSSL
 
 * generate_priv_key: snippet which generates a private/public EC key pair using openssl
-* read_random: tries to read x amount of bytes from a random source (eg /dev/urandom)
+* read_random: tries to continuously read x amount of bytes from a random source (eg /dev/urandom).  Catches SIGINT.  So to be stopped with SIGTERM (eg. the usual kill, but not CTRL-C)
+* test_read_random.sh: starts read_random and continuously fires SIGINTs to it.  The aim is to see if it can happen that the read to /udev/urandom returns fewer bytes than requested.
 
 In order to build locally:
 
